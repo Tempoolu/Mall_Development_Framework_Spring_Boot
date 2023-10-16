@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="mall_admin" />
+        <module name="mall_mbg" />
+        <module name="mall_security" />
+        <module name="mall_portal" />
+        <module name="mall_common" />
+        <module name="mall_search" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="mall_admin" options="-parameters" />
+      <module name="mall_common" options="-parameters" />
+      <module name="mall_mbg" options="-parameters" />
+      <module name="mall_portal" options="-parameters" />
+      <module name="mall_search" options="-parameters" />
+      <module name="mall_security" options="-parameters" />
+    </option>
+  </component>
+</project>

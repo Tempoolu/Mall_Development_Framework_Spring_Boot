@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mall.dao.UmsAdminRoleRelationDao">
+    <select id="getResourceList" resultType="com.example.mall.model.UmsResource">
+        SELECT re.* FROM ums_admin ad, ums_role ro, ums_admin_role_relation adror,
+                         ums_role_resource_relation rorer, ums_resource re WHERE
+            ad.id = #{adminId} and
+            ad.id = adror.admin_id AND
+            adror.role_id = ro.id AND
+            ro.id = rorer.role_id AND
+            rorer.resource_id = re.id
+    </select>
+
+    <select id="getRoleList" resultType="com.example.mall.model.UmsRole">
+        SELECT ro.* FROM ums_admin ad, ums_role ro, ums_admin_role_relation adro
+        WHERE ad.id = adro.admin_id
+          AND adro.role_id = ro.id
+          AND ad.id = #{adminId}
+    </select>
+
+    <insert id="insertAdminRoleList">
+        INSERT INTO ums_admin_role_relation (admin_id, role_id) VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.adminId,jdbcType=BIGINT},
+            #{item.roleId,jdbcType=BIGINT})
+        </foreach>
+    </insert>
+</mapper>
